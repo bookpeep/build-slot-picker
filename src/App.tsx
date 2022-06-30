@@ -2,6 +2,7 @@ import { Box, Button, Drawer, Typography } from "@mui/material";
 
 import { useState } from "react";
 import { BasicDatePicker } from "./components/BasicDatePicker";
+import { TimeOfDayPicker } from "./components/TimeOfDayPicker";
 
 // Assume data arrives like this
 
@@ -44,6 +45,8 @@ function App() {
       >
         <Typography fontWeight={500}>Slot picker should be here.</Typography>
       </Drawer>
+
+      <TimeOfDayPicker selected='Afternoon' onPeriodClick={() => {}}/>
     </Box>
   );
 }
