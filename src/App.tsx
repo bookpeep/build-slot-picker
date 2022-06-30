@@ -3,6 +3,7 @@ import { Box, Button, Drawer, Typography } from "@mui/material";
 import { useState } from "react";
 import { BasicDatePicker } from "./components/BasicDatePicker";
 import { TimeOfDayPicker } from "./components/TimeOfDayPicker";
+import { foo } from "./utils/timeFormatingUtils";
 
 // Assume data arrives like this
 
@@ -14,6 +15,8 @@ import { TimeOfDayPicker } from "./components/TimeOfDayPicker";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(foo('01:00'))
 
   return (
     <Box
