@@ -1,6 +1,7 @@
 import { Box, Button, Drawer, Typography } from "@mui/material";
 
 import { useState } from "react";
+import { BasicDatePicker } from "./components/BasicDatePicker";
 
 // Assume data arrives like this
 
@@ -31,6 +32,7 @@ function App() {
       <Button onClick={() => setIsModalOpen(!isModalOpen)} variant="contained">
         Open Modal
       </Button>
+      <BasicDatePicker />
 
       <Drawer
         anchor="bottom"
