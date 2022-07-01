@@ -1,12 +1,6 @@
-# Build a slot picker
+## Notes 
 
-This repository provides a basic scaffold for building a time slot picker.
-
-This component must use Luxon and MUI for the date picker.
-
-| [design.pdf](design.pdf) | [design.png](design.png) |
-| ------------------------ | ------------------------ |
-
+* unlike date-fns, looks like luxon does not respect locale in `startOf('week')` function https://github.com/moment/luxon/issues/373. To address this, I manually overrided the implementation of `startOfWeek` in the luxon adaptor. I kind of copied the implementation of [`date-fns/startOfWeek`](https://github.com/date-fns/date-fns/blob/master/src/startOfWeek/index.ts). 
 
 ## Needs attention
 
