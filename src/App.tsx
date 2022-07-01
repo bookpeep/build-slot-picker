@@ -1,9 +1,8 @@
-import { Box, Button, Drawer, Typography } from "@mui/material";
-
 import { useState } from "react";
+import { Box, Button, Drawer, Typography } from "@mui/material";
 import { BasicDatePicker } from "./components/BasicDatePicker";
-import { TimeOfDayPicker } from "./components/TimeOfDayPicker";
-import { foo } from "./utils/timeFormatingUtils";
+import { Slots, TimeOfDayPicker } from "./components/TimeOfDayPicker";
+import { generateTimeSlots } from "./utils/timeFormatingUtils";
 
 // Assume data arrives like this
 
@@ -13,10 +12,16 @@ import { foo } from "./utils/timeFormatingUtils";
 //   evening: ["08:00 pm", "08:15 pm", "08:30 pm", "08:45 pm", "09:00 pm"],
 // };
 
+const timeSlots = {
+  morning: generateTimeSlots(8, 12, .25),
+  afternoon: generateTimeSlots(12, 4, 0.25),
+  evening: generateTimeSlots(4, 8, 0.25)
+};
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(foo('01:00'))
+
 
   return (
     <Box
@@ -50,6 +55,8 @@ function App() {
       </Drawer>
 
       <TimeOfDayPicker selected='Afternoon' onPeriodClick={() => {}}/>
+      <Slots timeSlots={timeSlots.morning} numberOfCols={4}/>
+      
     </Box>
   );
 }
