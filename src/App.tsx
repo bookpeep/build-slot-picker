@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Box, Button, Drawer, Typography } from "@mui/material";
 import { BasicDatePicker } from "./components/BasicDatePicker";
-import { Slots, TimeOfDayPicker } from "./components/TimeOfDayPicker";
 import { generateTimeSlots } from "./utils/timeFormatingUtils";
+import { SlotSelect } from "./components/SlotSelect";
+import { Slots } from "./components/Slots";
 
 // Assume data arrives like this
 
@@ -14,14 +15,17 @@ import { generateTimeSlots } from "./utils/timeFormatingUtils";
 
 const timeSlots = {
   morning: generateTimeSlots(8, 12, .25),
-  afternoon: generateTimeSlots(12, 4, 0.25),
-  evening: generateTimeSlots(4, 8, 0.25)
+  afternoon: generateTimeSlots(12, 16, 0.25),
+  evening: generateTimeSlots(16, 20, 0.25)
 };
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTimeSlot, setTimeSlot] = useState<string | null>(null);
 
-
+  const morningSlots = <Slots timeSlots={timeSlots.morning} numberOfCols={4} onSelectTimeSlot={setTimeSlot}/>
+  const afternoonSlots = <Slots timeSlots={timeSlots.afternoon} numberOfCols={4} onSelectTimeSlot={setTimeSlot}/>
+  const eveningSlots = <Slots timeSlots={timeSlots.evening} numberOfCols={4} onSelectTimeSlot={setTimeSlot}/>
 
   return (
     <Box
@@ -54,8 +58,7 @@ function App() {
         <Typography fontWeight={500}>Slot picker should be here.</Typography>
       </Drawer>
 
-      <TimeOfDayPicker selected='Afternoon' onPeriodClick={() => {}}/>
-      <Slots timeSlots={timeSlots.morning} numberOfCols={4}/>
+      <SlotSelect morningSlots={morningSlots} afterNoonSlots={afternoonSlots} eveningSlots={eveningSlots} />
       
     </Box>
   );
