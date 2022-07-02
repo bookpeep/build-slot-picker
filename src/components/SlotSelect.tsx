@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 
 const enum Periods {
   Morning = 'Morning',
@@ -19,7 +20,7 @@ function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
   return (
-    <div
+    <Container
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
@@ -31,7 +32,7 @@ function TabPanel(props: TabPanelProps) {
           {children}
         </Box>
       )}
-    </div>
+    </Container>
   );
 }
 

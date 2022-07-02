@@ -39,10 +39,7 @@ function App() {
       <Typography style={{ fontSize: 30, color: "white" }}>
         Build A slot Picker
       </Typography>
-
-      <Button onClick={() => setIsModalOpen(!isModalOpen)} variant="contained">
-        Open Modal
-      </Button>
+      
       <DateTimePopper timeSlots={availableTimeSlots} setDate={setDate} setTimeSlot={setTimeSlot} />
 
       <Box>

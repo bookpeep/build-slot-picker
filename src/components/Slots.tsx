@@ -1,19 +1,12 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import {chunk } from '../utils/arrayUtils';
 
-// FIXME: timeSlots must be divisable by numberOfCols otherwise some lots won't display
+/**
+ * Renders Time Slots into columns determined by numberOfCols
+ */
 export function Slots({ timeSlots, numberOfCols, onSelectTimeSlot }: { timeSlots: string[], numberOfCols: number, onSelectTimeSlot: (val: string) => void }) {
-
-  // TODO: messy code, improve readibility 
-  const cols: string[][] = [];
-  let colIndex = 0;
-  for (let col = 0; col < timeSlots.length; col += Math.floor(timeSlots.length / numberOfCols)) {
-    cols[colIndex] = [];
-    for (let i = col; i < col + Math.floor(timeSlots.length / numberOfCols); i++) {
-      cols[colIndex].push(timeSlots[i]);
-    }
-    colIndex++;
-  }
+  const cols: string[][] = chunk(timeSlots, numberOfCols);
 
   return (
     <Stack spacing={2} direction="row">

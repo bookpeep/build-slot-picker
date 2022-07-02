@@ -6,16 +6,13 @@ const luxon = new LuxonAdapter({ locale: 'en' });
  * 
  * @param time Must be in 24 hours format 
  * @example
- * // return "1:03 pm"
  * toShortTime("13:03")
+ * // return "1:03 pm"
  * @returns short string
  */
-export function toShortTime(time: string): string {
-  
+function toShortTime(time: string): string {
   // TODO: input validation
-
-  const temp = luxon.parseISO(time).toLocaleString({ timeStyle: 'short' })
-  return temp;
+  return luxon.parseISO(time).toLocaleString({ timeStyle: 'short' });
 }
 
 /**
@@ -24,12 +21,13 @@ export function toShortTime(time: string): string {
  * @param fromHour 
  * @param toHour 
  * @param hourDivision must be between 0 <= hourDivision < 1
- * @returns 
+ * @example
+ * generateTimeSlots(1, 3, 0.5)
+ * // returns ['01:00 am', '01:30 am', '02:00 am', '02:30 am']
+ * @returns list of time slotes from fromHour (inclusive) to toHour (exlusive) with increments in minutes
  */
-export function generateTimeSlots(fromHour: number, toHour: number, hourDivision: number): string[] {
-  
+export function generateTimeSlots(fromHour: number, toHour: number, hourDivision: number): string[] {  
   // TODO: input validation
-
   const incrementInMinutes = Math.floor(hourDivision * 60); 
   const minutesWithinHour = [];
   for (let i = 0; i < 60; i+= incrementInMinutes) {

@@ -4,13 +4,12 @@
 
 ## Needs attention
 
-* Unit tests
-* Localization
-* When you click on a time slot, it only focuses on the element. It should remain selected when you lose focus
-* component does not have callbacks to pass in selected date/time
+* no Unit tests
+* no Localization. all hardcoded strings
+* When you click on a time slot, it only focuses on the element. It should be styled as the selected slot even when you lose focus
 * big mess passing around props here and there
 * poor styling
-* no textfield input for date. didn't have enough time to work on that 
+* no textfield input for date. didn't have enough time to work on it and considered it out of scope
 * poorly named components
 
  
