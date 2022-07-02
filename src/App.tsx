@@ -1,10 +1,7 @@
 import { useState } from "react";
-import { Box, Button, Drawer, Typography } from "@mui/material";
-import { BasicDatePicker } from "./components/BasicDatePicker";
+import { Box, Typography } from "@mui/material";
 import { DateTimePopper } from "./components/DateTimePopper";
-import { generateTimeSlots } from "./utils/timeFormatingUtils";
-import { SlotSelect } from "./components/SlotSelect";
-import { Slots } from "./components/Slots";
+import { generateTimeSlots } from "./utils/time-formating-utils";
 
 // Assume data arrives like this
 

@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import {chunk } from '../utils/arrayUtils';
+import {chunk } from '../utils/array-utils';
 
 /**
  * Renders Time Slots into columns determined by numberOfCols
