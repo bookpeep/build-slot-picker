@@ -1,6 +1,7 @@
-import { Box, Button, Drawer, Typography } from "@mui/material";
-
 import { useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { DateTimePopper } from "./components/DateTimePopper";
+import { generateTimeSlots } from "./utils/time-formating-utils";
 
 // Assume data arrives like this
 
@@ -10,13 +11,21 @@ import { useState } from "react";
 //   evening: ["08:00 pm", "08:15 pm", "08:30 pm", "08:45 pm", "09:00 pm"],
 // };
 
+const availableTimeSlots = {
+  morning: generateTimeSlots(8, 12, .25),
+  afternoon: generateTimeSlots(12, 16, 0.25),
+  evening: generateTimeSlots(16, 20, 0.25)
+};
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTimeSlot, setTimeSlot] = useState<string | null>(null);
+  const [selectedDate, setDate] = useState<string | null>(null);
+
+
 
   return (
     <Box
-      width="100vw"
-      height="100vh"
       bgcolor="#222222"
       display="flex"
       alignItems="center"
@@ -27,21 +36,16 @@ function App() {
       <Typography style={{ fontSize: 30, color: "white" }}>
         Build A slot Picker
       </Typography>
+      
+      <DateTimePopper timeSlots={availableTimeSlots} setDate={setDate} setTimeSlot={setTimeSlot} />
 
-      <Button onClick={() => setIsModalOpen(!isModalOpen)} variant="contained">
-        Open Modal
-      </Button>
-
-      <Drawer
-        anchor="bottom"
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(!isModalOpen)}
-        PaperProps={{
-          sx: { padding: 4 },
-        }}
-      >
-        <Typography fontWeight={500}>Slot picker should be here.</Typography>
-      </Drawer>
+      <Box>
+        <Typography style={{ fontSize: 30, color: "white" }}>
+          Selected date and slot = {selectedDate}, {selectedTimeSlot}
+        </Typography>
+      </Box>
+      
+      
     </Box>
   );
 }
